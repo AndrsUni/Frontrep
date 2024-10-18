@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find my Business</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="LogoBusiness.png" alt="Logo">
+                <span>Find My Business</span> <!-- Texto al lado del logo -->
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-menu-item">
+                    <a href="Home.html" class="nav-menu-link nav-link">Inicio</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="Ubicacion.html" class="nav-menu-link nav-link">Ubicación</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="Locaciones.html" class="nav-menu-link nav-link">Locaciones</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="Nosotros.html" class="nav-menu-link nav-link">Nosotros</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="Referencias.html" class="nav-menu-link nav-link">Referencias</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="content" style="text-align: center">
+            <section class="carousel">
+                <div class="carousel-images">
+                    <img src="Local1.png" alt="Imagen 1" class="active">
+                    <img src="Local2.jpg" alt="Imagen 2">
+                    <img src="Local3.jpg" alt="Imagen 3">
+                </div>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </section>            
+           
+            <p>¿Buscas mejorar la visibilidad de tu negocio y aumentar tus oportunidades en las ventas? ¡Llegaste al lugar indicado!</p>
+    
+            <section class="hero">
+                <a href="#properties" class="cta-button">Ver Propiedades</a>
+            </section>
+
+            <section id="properties" class="grid-container">
+                <h2>Propiedades Destacadas</h2>
+
+                <div class="property-card" draggable="true">
+                    <div class="gallery">
+                        <img src="Local1.png" alt="Descripción de la imagen 1">
+                        <div class="info">
+                            <h3>Local con ampliaciones previas</h3>
+                            <p>Lugar de alta movilidad cerca del C.C. Unicentro</p>
+                            <p>1 sala, 1 apartaestudio, 2 baños</p>
+                            <p>$2,500,000,000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" draggable="true">
+                    <div class="gallery">
+                        <img src="Local2.jpg" alt="Descripción de la imagen 2">
+                        <div class="info">
+                            <h3>Local pequeño</h3>
+                            <p>Lugar de alta movilidad cerca del C.C. Unicentro</p>
+                            <p>3 habitaciones, 2 baños</p>
+                            <p>$300,000,000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" draggable="true">
+                    <div class="gallery">
+                        <img src="Local3.jpg" alt="Descripción de la imagen 2">
+                        <div class="info">
+                            <h3>Inmueble de 200m2 cerca de </h3>
+                            <p>Ubicado cerca de Museo Nacional</p>
+                            <p>1 almacén, una recámara, 1 apartaestudio, 3 baños</p>
+                            <p>$1,000,000,000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about">
+                <h2>Acerca de Nosotros</h2>
+                <p>Nos especializamos en ayudar a las personas a encontrar su hogar ideal.</p>
+            </section>
+
+            <section id="contact">
+                <h2>Contacto</h2>
+                <form>
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                    <input type="submit" value="Enviar">
+                </form>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Inmobiliaria Moderna. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-images img');
+            if (index >= slides.length) currentIndex = 0;
+            else if (index < 0) currentIndex = slides.length - 1;
+            else currentIndex = index;
+        
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+            slides[currentIndex].classList.add('active');
+        }
+        
+        function moveSlide(direction) {
+            showSlide(currentIndex + direction);
+        }
+        
+        // Muestra la primera imagen al cargar
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #272d38;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex; 
+    align-items: center; /* Alinear verticalmente */
+}
+
+.navbar-logo img {
+    width: 70px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.carousel {
+    position: relative;
+    max-width: 600px; /* Ajusta el tamaño según sea necesario */
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    max-width: 100%;
+    display: none; /* Escondemos las imágenes por defecto */
+}
+
+.carousel-images img.active {
+    display: block; /* Solo mostramos la imagen activa */
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    background: url('hero-image.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.cta-button {
+    background: #ff5722;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.property-card {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.property-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.property-card:hover {
+    transform: scale(1.05);
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.gallery {
+    position: relative;
+}
+
+.image-card img {
+    width: 100%; /* Ajusta según sea necesario */
+    border-radius: 8px;
+}
+
+.info {
+    display: none; /* Ocultar por defecto */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+}
+
+.image-card:hover .info {
+    display: block; /* Muestra la información al pasar el ratón */
+}
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+}
+
+
+
+
+$(document).ready(function() {
+    
+    $('.property-card').on('dragstart', function(event) {
+        event.originalEvent.dataTransfer.setData('text/plain', event.target.outerHTML);
+        $(this).addClass('dragging');
+    });
+
+    $('.property-card').on('dragend', function() {
+        $(this).removeClass('dragging');
+    });
+
+    $('.grid-container').on('dragover', function(event) {
+        event.preventDefault();
+        $(this).addClass('drag-over');
+    });
+
+    $('.grid-container').on('dragleave', function() {
+        $(this).removeClass('drag-over');
+    });
+
+    $('.grid-container').on('drop', function(event) {
+        event.preventDefault();
+        $(this).removeClass('drag-over');
+        const draggedCardHTML = event.originalEvent.dataTransfer.getData('text/plain');
+        const newCard = $(draggedCardHTML);
+        $(this).append(newCard);
+    });
+});
